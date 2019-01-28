@@ -1,0 +1,18 @@
+<div class="row">
+    <div class="col-xs-12">
+        <button 
+        class="btn btn-success"
+        (click)="onNewRecepie()"
+        >New Recipe</button>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+        <app-recepies-item
+        *ngFor="let recepie of (recepiesState | async).recepies; let i = index" 
+        [item]="recepie"  
+        [name]="recepie.name">
+        </app-recepies-item>
+    </div>
+</div>
