@@ -28,7 +28,7 @@ export class RecepieEditComponent implements OnInit {
   		.subscribe(
   		(params: Params) => {
   			  this.name = params['name'];
-          console.log(this.name)
+          //console.log(this.name)
   			  this.editMode = params['name'] != null;
           this.initForm();
   		  }
