@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Recepie } from '../recepies-list/recepie-model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import * as ShoppingListActions from '../../shopping-list/store/shopping-list.actions';
-import * as fromApp from '../../store/app.reducers';
 import * as fromReceipe from '../store/recepie.reducers';
 import * as RecepieActions from '../store/recepie.actions';
 import { Observable } from 'rxjs';
@@ -31,7 +30,8 @@ export class RecepiesDetailComponent implements OnInit{
           this.recepieState = this.store.select("recepies");
           this.recepieState.pipe(
             tap( recepies => {
-              this.recepie = recepies.recepies.filter((recep:Recepie) => recep.name === this.name)[0];
+              this.recepie = recepies.recepies.filter((recep:Recepie) => recep.name === this.name)[0]
+              if(!this.recepie) this.router.navigate(['/']);
             })
           ).subscribe()
         }
@@ -40,9 +40,7 @@ export class RecepiesDetailComponent implements OnInit{
   addToShoppingList() {
     this.store.dispatch(new ShoppingListActions.AddIngredients(this.recepie.ingredients))
     }
-  // ngOnDestroy() {
-  //   this.paramsSubscription.unsubscribe();
-  // }
+
   onEditRecepie() {
     this.router.navigate(['edit'], {relativeTo: this.route})
   }

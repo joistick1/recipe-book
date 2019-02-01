@@ -12,6 +12,8 @@ import { RecepiesRoutingModule } from '../recepies/recepies-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import { recepieReducer } from './store/recepie.reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { RecepieEffects } from './store/recepie.effects';
 
 @NgModule({
 	declarations: [
@@ -27,7 +29,8 @@ import { recepieReducer } from './store/recepie.reducers';
 		ReactiveFormsModule,
 		RecepiesRoutingModule,
 		SharedModule,
-		StoreModule.forFeature('recepies', recepieReducer)
+		StoreModule.forFeature('recepies', recepieReducer),
+		EffectsModule.forFeature([RecepieEffects])
 	]
 })
 

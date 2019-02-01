@@ -6,6 +6,8 @@ export const ADD_RECEPIE = "ADD_RECEPIE";
 export const UPDATE_RECEPIE = "UPDATE_RECEPIE";
 export const DELETE_RECEPIE = "DELETE_RECEPIE";
 export const GET_RECEPIE_BY_NAME = "GET_RECEPIE_BY_NAME";
+export const FETCH_RECEPIES = "FETCH_RECEPIES";
+export const STORE_RECEPIES = "STORE_RECEPIES";
 
 export class SetRecepies implements Action {
     readonly type = SET_RECEPIES;
@@ -36,9 +38,19 @@ export class GetRecepieByName implements Action {
 
     constructor(public payload: string) {}
 }
+
+export class FetchRecepies implements Action {
+    readonly type = FETCH_RECEPIES;
+}
+
+export class StoreRecepies implements Action {
+    readonly type = STORE_RECEPIES;
+}
 export type RecepieActions = 
     SetRecepies | 
     AddRecepie |
     UpdateRecepie |
     DeleteRecepie |
-    GetRecepieByName;
+    GetRecepieByName |
+    FetchRecepies |
+    StoreRecepies;

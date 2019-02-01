@@ -5,9 +5,6 @@ import { HeaderComponent } from './header/header.component';
 import { SharedModule } from '../shared/shared.module';
 import { AppRoutingModule } from '../app-routing.module';
 
-//import { DropdownDirective } from '../shared/dropdown.directive';
-import { RecepieService } from '../recepies/recepies.service'
-import { DataStorageService } from '../shared/data-storage.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'app/shared/auth.interceptor';
 import { LoggingInterceptor } from 'app/shared/logging.interceptor';
@@ -27,8 +24,6 @@ import { LoggingInterceptor } from 'app/shared/logging.interceptor';
 		HeaderComponent
 	],
 	providers: [
-		RecepieService, 
-		DataStorageService,
 		{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
 		{provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true}
 	]

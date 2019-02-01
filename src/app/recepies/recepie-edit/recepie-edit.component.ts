@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms'
-import { RecepieService } from '../recepies.service';
+import { FormGroup, FormControl, FormArray, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import * as fromReceipe from '../store/recepie.reducers';
 import * as RecepieActions from '../store/recepie.actions';
@@ -18,12 +17,10 @@ export class RecepieEditComponent implements OnInit {
   receipeForm: FormGroup;
   receipe: Recepie;
   constructor(private route: ActivatedRoute, 
-              private receipeService: RecepieService,
               private router: Router,
               private store: Store<fromReceipe.FeatureState>) { }
 
   ngOnInit() {
-    this.receipeService.onConsole();
   	this.route.params
   		.subscribe(
   		(params: Params) => {
